@@ -2,15 +2,15 @@
 
 stack = []
 aux = []
-goal = [1, 2, 3, 4, 5]
+# goal = [1, 2, 3, 4, 5]
 
 print "Enter the pancake stack (5 integers from 1 to 5):"
 
-for i in range(0, 5): 
-        ele = int(input()) 
+for i in range(0, 5):
+        ele = int(input())
         stack.append(ele)
-      
-print(stack) 
+
+print(stack)
 
 
 # Test flip
