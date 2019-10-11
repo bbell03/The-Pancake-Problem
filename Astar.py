@@ -2,13 +2,13 @@
 
 stack = []
 aux = []
+goal = [1, 2, 3, 4, 5]
 
 print "Enter the pancake stack (5 integers from 1 to 5):"
 
 for i in range(0, 5): 
         ele = int(input()) 
-  
-        stack.append(ele) # adding the element 
+        stack.append(ele)
       
 print(stack) 
 
@@ -29,6 +29,17 @@ for i in range(n-1, 5):
         stack.append(b)
 
 print stack
+
+# Is the stack out of order?
+out_of_order = False
+for i in range(0, 5):
+        if (stack[i] != i+1):
+                out_of_order = True
+
+if (out_of_order):
+        print "Out of order!"
+else:
+        print "In order!"
 
 
 # x = stack.pop()
