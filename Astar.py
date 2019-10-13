@@ -1,45 +1,52 @@
 # Caroline Vanderlee and Brandon Bell
 
+def flip(index, stack, aux):
+    for j in range(5, index, -1):
+        a = stack.pop()
+        aux.append(a)
+
+    for i in range(index, 5):
+        b = aux[i-index]
+        stack.append(b)
+
+def check_order(stack):
+    in_order = True
+    for i in range(0, 5):
+        if (stack[i] != i+1):
+            in_order = False
+
+    return in_order
+
 stack = []
 aux = []
-# goal = [1, 2, 3, 4, 5]
 
-print "Enter the pancake stack (5 integers from 1 to 5):"
+print "Enter the pancake stack (5 integers from 1 to 5)."
+print "Press enter after each number. Enter the stack from bottom to top."
 
 for i in range(0, 5):
         ele = int(input())
         stack.append(ele)
 
-print(stack)
+print "Your stack is, from bottom to top:"
+print stack
 
 
 # Test flip
 print "Pop 3 elements off the stack"
 
-n = 3
+num = 3;
 
-for j in range(5, n-1, -1):
-        a = stack.pop()
-        aux.append(a)
-
-print aux
-
-for i in range(n-1, 5):
-        b = aux[i-n+1]
-        stack.append(b)
+ind = num-1;
+flip(ind, stack, aux)
 
 print stack
 
 # Is the stack out of order?
-out_of_order = False
-for i in range(0, 5):
-        if (stack[i] != i+1):
-                out_of_order = True
 
-if (out_of_order):
-        print "Out of order!"
-else:
+if (check_order(stack)):
         print "In order!"
+else:
+        print "Out of order!"
 
 
 # x = stack.pop()
