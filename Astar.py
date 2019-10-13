@@ -17,6 +17,11 @@ def check_order(stack):
 
     return in_order
 
+def find_first_unordered(stack):
+    for i in range(0, 5):
+        if (stack[i] != i+1):
+            return i
+
 stack = []
 aux = []
 
@@ -30,27 +35,12 @@ for i in range(0, 5):
 print "Your stack is, from bottom to top:"
 print stack
 
+if(not(check_order(stack))):
+    ind = find_first_unordered(stack)
+    print "First unordered index: " + str(ind)
+    print "Flipping: "
+    flip(ind, stack, aux)
 
-# Test flip
-print "Pop 3 elements off the stack"
 
-num = 3;
-
-ind = num-1;
-flip(ind, stack, aux)
-
+print "Goal state reached:"
 print stack
-
-# Is the stack out of order?
-
-if (check_order(stack)):
-        print "In order!"
-else:
-        print "Out of order!"
-
-
-# x = stack.pop()
-# print x
-# print stack
-# stack.append(x)
-# print stack
