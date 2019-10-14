@@ -49,10 +49,18 @@ def brandon_flip(index, stack, aux):
 
 # helper function is_consecutive
 def is_consecutive(stack):
-    i = -1
+    start_ind = -1
+    end_ind = -1
     for i in range(0, 4):
-        if ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1))
-            return i
+        if ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1)):
+            start_ind = i
+            i = i+1
+            end_ind = i
+            while ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1)):
+                i = i+1
+                end_ind = i
+    print "start index: " + str(start_ind) + " and end index: " + str(end_ind)
+    return start_ind
 
 
 # helper function recurse_flip
