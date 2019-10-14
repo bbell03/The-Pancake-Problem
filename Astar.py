@@ -42,6 +42,14 @@ def brandon_flip(index, stack, aux):
         stack.append(b)
 
 
+
+def is_consecutive(stack):
+    i = -1
+    for i in range(0, 4):
+        if ((stack[i] = stack[i+1] - 1) OR (stack[i] = stack[i+1] + 1))
+            return i
+
+
 def recurse_flip(ind, stack):
     flip(ind, stack, [])
     if(not(check_order(stack))):
