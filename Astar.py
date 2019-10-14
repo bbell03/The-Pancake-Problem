@@ -1,6 +1,5 @@
 # Caroline Vanderlee and Brandon Bell
 
-# helper function flip
 def flip(index, stack, aux):
     for j in range(5, index, -1):
         a = stack.pop()
@@ -10,8 +9,8 @@ def flip(index, stack, aux):
         b = aux[i-index]
         stack.append(b)
 
+    return stack
 
-# helper function check_order
 def check_order(stack):
     in_order = True
     for i in range(0, 5):
@@ -20,14 +19,12 @@ def check_order(stack):
     return in_order
 
 
-# helper function find_first_unordered
 def find_first_unordered(stack):
+    print('find start')
     for i in range(0, 5):
         if (stack[i] != i+1):
             return i
 
-
-# helper function count_num_unordered
 def count_num_unordered(stack):
     count = 0;
     for i in range(0, 5):
@@ -35,37 +32,49 @@ def count_num_unordered(stack):
             count = count + 1
     return count
 
+#where x is the index of the first unordered pancake
+#finds next consecutive element and brings it to the back of the stack
+def next_to_end(x, stack):
+    print('next start')
+    aux = []
+    if x == 0:
+        for i in range(5): #starting from stack top look for 1 4 elems in
+            if stack[i] == 1:
+                #pop from 1 to end of stack
+                for k in range(5-i):
+                    a = stack.pop()
+                    print a
+                    aux.append(a)
+                print stack
+                print aux
+                for z in range(len(aux)):
+                    stack.append(aux[z])
+                print stack
+                return stack
+    else:
+        print('in else')
+        for i in range(x, 5):
+            print('precondition')
+            if stack[i] == stack[x-1]+1:
+                print('postcondition')
+                for k in range(5-i):
+                    a = stack.pop()
+                    print a
+                    aux.append(a)
+                print stack
+                print aux
+                for z in range(len(aux)):
+                    stack.append(aux[z])
+                print stack
+                return stack
 
-# helper function brandon_flip
-def brandon_flip(index, stack, aux):
-    for j in range(5-index, index, -1):
-        a = stack.pop()
-        aux.append(a)
-
-    for i in range(index, 5-index): #
-        b = aux[i-index]
-        stack.append(b)
+#def is_consecutive(stack):
+    #i = -1
+    #for i in range(0, 4):
+        #if ((stack[i] == stack[i+1] - 1) or (stack[i] == stack[i+1] + 1)):
+            #return i
 
 
-# helper function is_consecutive
-def is_consecutive(stack):
-    start_ind = -1
-    end_ind = -1
-    i=0
-    while (i < 4):
-        if ((stack[i] == stack[i+1]-1) or (stack[i] == stack[i+1]+1)):
-            start_ind = i
-            i = i+1
-            end_ind = i
-            while (i<4 and ((stack[i] == stack[i+1]-1) or (stack[i] == stack[i+1]+1))):
-                i = i+1
-                end_ind = i
-        i = i+1
-    print "start index: " + str(start_ind) + " and end index: " + str(end_ind)
-    return start_ind
-
-
-# helper function recurse_flip
 def recurse_flip(ind, stack):
     flip(ind, stack, [])
     if(not(check_order(stack))):
@@ -88,11 +97,17 @@ for i in range(0, 5):
 print "Your stack is, from bottom to top:"
 print stack
 
-# if(not(check_order(stack))):
-#     ind = find_first_unordered(stack)
-#     recurse_flip(ind, stack)
+while(not(check_order(stack))):
+    ind = find_first_unordered(stack)
+    print(ind)
+    print stack
+    stack = next_to_end(ind, stack)
+    ind = find_first_unordered(stack)
+    stack = flip(ind, stack, [])
+    print stack
 
-is_consecutive(stack)
+
+    #recurse_flip(ind, stack)
 
 
 print "Goal state reached:"
