@@ -3,10 +3,12 @@
 def flip(index, stack, aux):
     for j in range(5, index, -1):
         a = stack.pop()
+        print(a)
         aux.append(a)
 
-    for i in range(index, 5):
+    for i in range(index, 5): #
         b = aux[i-index]
+        #print(b)
         stack.append(b)
 
 
@@ -26,11 +28,22 @@ def find_first_unordered(stack):
 
 
 def recurse_flip(ind, stack):
+    aux = []
     flip(ind, stack, [])
     if(not(check_order(stack))):
         ### ALGORITHM FOR CALCULATING INDEX TO FLIP GOES HERE ###
         ind = find_first_unordered(stack) + 1 # placeholder: must change
-        # recurse_flip(ind, stack)
+        for j in range(5-ind, ind, -1):
+            a = stack.pop()
+            print(a)
+            aux.append(a)
+
+        for i in range(ind, 5-ind):
+            b = aux[i-ind]
+            print(b)
+            stack.append(b)
+
+        #recurse_flip(ind, stack)
 
 
 # Main
