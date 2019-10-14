@@ -51,14 +51,16 @@ def brandon_flip(index, stack, aux):
 def is_consecutive(stack):
     start_ind = -1
     end_ind = -1
-    for i in range(0, 4):
-        if ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1)):
+    i=0
+    while (i < 4):
+        if ((stack[i] == stack[i+1]-1) or (stack[i] == stack[i+1]+1)):
             start_ind = i
             i = i+1
             end_ind = i
-            while ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1)):
+            while (i<4 and ((stack[i] == stack[i+1]-1) or (stack[i] == stack[i+1]+1))):
                 i = i+1
                 end_ind = i
+        i = i+1
     print "start index: " + str(start_ind) + " and end index: " + str(end_ind)
     return start_ind
 
@@ -86,9 +88,11 @@ for i in range(0, 5):
 print "Your stack is, from bottom to top:"
 print stack
 
-if(not(check_order(stack))):
-    ind = find_first_unordered(stack)
-    recurse_flip(ind, stack)
+# if(not(check_order(stack))):
+#     ind = find_first_unordered(stack)
+#     recurse_flip(ind, stack)
+
+is_consecutive(stack)
 
 
 print "Goal state reached:"
