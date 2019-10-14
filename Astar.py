@@ -1,5 +1,6 @@
 # Caroline Vanderlee and Brandon Bell
 
+# helper function flip
 def flip(index, stack, aux):
     for j in range(5, index, -1):
         a = stack.pop()
@@ -10,6 +11,7 @@ def flip(index, stack, aux):
         stack.append(b)
 
 
+# helper function check_order
 def check_order(stack):
     in_order = True
     for i in range(0, 5):
@@ -18,12 +20,14 @@ def check_order(stack):
     return in_order
 
 
+# helper function find_first_unordered
 def find_first_unordered(stack):
     for i in range(0, 5):
         if (stack[i] != i+1):
             return i
 
 
+# helper function count_num_unordered
 def count_num_unordered(stack):
     count = 0;
     for i in range(0, 5):
@@ -32,6 +36,7 @@ def count_num_unordered(stack):
     return count
 
 
+# helper function brandon_flip
 def brandon_flip(index, stack, aux):
     for j in range(5-index, index, -1):
         a = stack.pop()
@@ -42,14 +47,15 @@ def brandon_flip(index, stack, aux):
         stack.append(b)
 
 
-
+# helper function is_consecutive
 def is_consecutive(stack):
     i = -1
     for i in range(0, 4):
-        if ((stack[i] = stack[i+1] - 1) OR (stack[i] = stack[i+1] + 1))
+        if ((stack[i] = stack[i+1] - 1) or (stack[i] = stack[i+1] + 1))
             return i
 
 
+# helper function recurse_flip
 def recurse_flip(ind, stack):
     flip(ind, stack, [])
     if(not(check_order(stack))):
