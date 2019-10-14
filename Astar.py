@@ -3,12 +3,10 @@
 def flip(index, stack, aux):
     for j in range(5, index, -1):
         a = stack.pop()
-        print(a)
         aux.append(a)
 
     for i in range(index, 5): #
         b = aux[i-index]
-        #print(b)
         stack.append(b)
 
 
@@ -17,7 +15,6 @@ def check_order(stack):
     for i in range(0, 5):
         if (stack[i] != i+1):
             in_order = False
-
     return in_order
 
 
@@ -25,6 +22,13 @@ def find_first_unordered(stack):
     for i in range(0, 5):
         if (stack[i] != i+1):
             return i
+
+def count_num_unordered(stack):
+    count = 0;
+    for i in range(0, 5):
+        if (stack[i] != i+1):
+            count = count + 1
+    return count
 
 
 def recurse_flip(ind, stack):
