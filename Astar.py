@@ -23,6 +23,7 @@ def find_first_unordered(stack):
         if (stack[i] != i+1):
             return i
 
+
 def count_num_unordered(stack):
     count = 0;
     for i in range(0, 5):
@@ -31,22 +32,21 @@ def count_num_unordered(stack):
     return count
 
 
+def brandon_flip(index, stack, aux):
+    for j in range(5-index, index, -1):
+        a = stack.pop()
+        aux.append(a)
+
+    for i in range(index, 5-index): #
+        b = aux[i-index]
+        stack.append(b)
+
+
 def recurse_flip(ind, stack):
-    aux = []
     flip(ind, stack, [])
     if(not(check_order(stack))):
         ### ALGORITHM FOR CALCULATING INDEX TO FLIP GOES HERE ###
         ind = find_first_unordered(stack) + 1 # placeholder: must change
-        for j in range(5-ind, ind, -1):
-            a = stack.pop()
-            print(a)
-            aux.append(a)
-
-        for i in range(ind, 5-ind):
-            b = aux[i-ind]
-            print(b)
-            stack.append(b)
-
         #recurse_flip(ind, stack)
 
 
