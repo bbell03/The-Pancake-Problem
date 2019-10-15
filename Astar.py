@@ -55,7 +55,7 @@ def next_to_end(x, stack):
     global num_flips
     aux = []
     # if 1 is the first element out of order and not last on the stack
-    # choose that as leaf node
+    # flip from stack at that point: choose that ordering as leaf node
     if x == 0 and (not(stack[4] == 1)):
         for i in range(5):
             if stack[i] == 1:
@@ -73,8 +73,10 @@ def next_to_end(x, stack):
     # and 1 is not the last element on the stack:
     elif (not(stack[4] == stack[x-1]+1)) and (not(stack[4] == 1)):
         for i in range(x, 5):
-            # find elements out of order: add leaf nodes to frontier
-            # choose a leaf node with minimum cost: next unordered element
+            # find elements out of order
+            # permutations of flipping of the stack from each element are added to the frontier
+            # choose the next unordered element to flip from:
+            # choose that permutation leaf node from the frontier
             if stack[i] == stack[x-1]+1:
                 # flip the stack from that point
                 for k in range(5-i):
@@ -109,7 +111,7 @@ print "There are " + str(num_unordered) + " elements out of order in this stack.
 # initialize frontier with initial state: stack
 # while the goal state has not been reached
 while(not(check_order(stack))):
-    # choose a leaf node with minimum cost: first unordered element
+    # choose the first unordered element: choose that permutation as leaf node
     # put unordered element at the end
     ind = find_first_unordered(stack)
     stack = next_to_end(ind, stack)
