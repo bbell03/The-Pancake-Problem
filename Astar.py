@@ -71,11 +71,12 @@ def next_to_end(x, stack):
                 return stack
     # if the first element out of order is not the last element on the stack
     # and 1 is not the last element on the stack:
+    # flip from stack at that point: choose that ordering as leaf node
     elif (not(stack[4] == stack[x-1]+1)) and (not(stack[4] == 1)):
         for i in range(x, 5):
             # find elements out of order
             # permutations of flipping of the stack from each element are added to the frontier
-            # choose the next unordered element to flip from:
+            # choose the next unordered element to flip from and bring it to the end:
             # choose that permutation leaf node from the frontier
             if stack[i] == stack[x-1]+1:
                 # flip the stack from that point
