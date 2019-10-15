@@ -17,8 +17,8 @@
     Our solution makes use of modularity and object oriented design to
     order a stack of pancakes using the A* search algorithm.
 
-    All functions take a stack as an input, and return its various relevant
-    attributes.
+    All functions take a stack as an input, and return either its various
+    relevant attributes or the stack itself.
 
   #### FUNCTION(S) IMPLEMENTED INCLUDE:
 
@@ -44,9 +44,12 @@
 
   ### METHODOLOGY:
     Our program is implemented according to the A* search algorithm described
-    in the specification and class slides. In our implementation. The main
+    in the specification and class slides. In our implementation, the main
     function is characterized by a while loop that repeatedly finds the next
     consecutive element, brings it to the end of the stack and then flips a
     substack from the first element out of order to the end, ensuring that the
     next consecutive element, which is now at the end, is put in its proper
-    order.
+    order. Our heuristic function was the amount of pancakes out of order.
+    Our cost function was how many times we would flip the spatula to put
+    the next element in order. Cost was minimized by finding the next element
+    out of order and choosing that as our leaf node. 
