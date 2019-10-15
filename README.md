@@ -52,4 +52,4 @@
     order. Our heuristic function was the amount of pancakes out of order.
     Our cost function was how many times we would flip the spatula to put
     the next element in order. Cost was minimized by finding the next element
-    out of order and choosing that as our leaf node.
+    out of order and always choosing that as our leaf node.
