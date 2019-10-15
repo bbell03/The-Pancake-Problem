@@ -1,6 +1,6 @@
 # Caroline Vanderlee and Brandon Bell
 
-def flip(index, stack, aux):
+def flip(index, stack, aux, num_flips):
     for j in range(5, index, -1):
         a = stack.pop()
         aux.append(a)
@@ -9,6 +9,8 @@ def flip(index, stack, aux):
         b = aux[i-index]
         stack.append(b)
 
+    num_flips = num_flips + 1
+    # print stack
     return stack
 
 def check_order(stack):
@@ -20,7 +22,7 @@ def check_order(stack):
 
 
 def find_first_unordered(stack):
-    print('find start')
+    # print('find start')
     for i in range(0, 5):
         if (stack[i] != i+1):
             return i
@@ -34,7 +36,7 @@ def count_num_unordered(stack):
 
 #where x is the index of the first unordered pancake
 #finds next consecutive element and brings it to the back of the stack
-def next_to_end(x, stack):
+def next_to_end(x, stack, num_flips):
     # print('next start')
     aux = []
     if x == 0:
@@ -50,8 +52,9 @@ def next_to_end(x, stack):
                 for z in range(len(aux)):
                     stack.append(aux[z])
                 # print stack
+                num_flips = num_flips + 1
                 return stack
-    else:
+    elif (not(stack[4] == stack[x-1]+1)):
         # print('in else')
         for i in range(x, 5):
             # print('precondition')
@@ -66,7 +69,11 @@ def next_to_end(x, stack):
                 for z in range(len(aux)):
                     stack.append(aux[z])
                 # print stack
+                num_flips = num_flips + 1
                 return stack
+    else:
+        return stack
+
 
 
 # Main
@@ -88,13 +95,12 @@ print "There are " + str(num_unordered) + " elements out of order in this stack.
 
 while(not(check_order(stack))):
     ind = find_first_unordered(stack)
-    print(ind)
-    print stack
-    stack = next_to_end(ind, stack)
-    num_flips = num_flips + 1
+    # print(ind)
+    # print stack
+    stack = next_to_end(ind, stack, num_flips)
+    # print stack
     ind = find_first_unordered(stack)
-    stack = flip(ind, stack, [])
-    num_flips = num_flips + 1
+    stack = flip(ind, stack, [], num_flips)
     print stack
 
 print "The spatula was was flipped " + str(num_flips) + " times!"
