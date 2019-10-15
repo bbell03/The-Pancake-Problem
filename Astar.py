@@ -1,6 +1,9 @@
 # Caroline Vanderlee and Brandon Bell
 
-def flip(index, stack, aux, num_flips):
+stack = []
+num_flips = 0
+
+def flip(index, stack, aux):
     for j in range(5, index, -1):
         a = stack.pop()
         aux.append(a)
@@ -9,6 +12,7 @@ def flip(index, stack, aux, num_flips):
         b = aux[i-index]
         stack.append(b)
 
+    global num_flips
     num_flips = num_flips + 1
     # print stack
     return stack
@@ -36,8 +40,9 @@ def count_num_unordered(stack):
 
 #where x is the index of the first unordered pancake
 #finds next consecutive element and brings it to the back of the stack
-def next_to_end(x, stack, num_flips):
+def next_to_end(x, stack):
     # print('next start')
+    global num_flips
     aux = []
     if x == 0:
         for i in range(5): #starting from stack top look for 1 4 elems in
@@ -78,9 +83,6 @@ def next_to_end(x, stack, num_flips):
 
 # Main
 
-stack = []
-num_flips = 0
-
 print "Enter the pancake stack (5 integers from 1 to 5)."
 print "Press enter after each number. Enter the stack from bottom to top."
 
@@ -97,10 +99,10 @@ while(not(check_order(stack))):
     ind = find_first_unordered(stack)
     # print(ind)
     # print stack
-    stack = next_to_end(ind, stack, num_flips)
+    stack = next_to_end(ind, stack)
     # print stack
     ind = find_first_unordered(stack)
-    stack = flip(ind, stack, [], num_flips)
+    stack = flip(ind, stack, [])
     print stack
 
 print "The spatula was was flipped " + str(num_flips) + " times!"
