@@ -52,9 +52,8 @@
     order. Our heuristic function was the amount of pancakes out of order.
     Our cost function was how many times we would flip the spatula to put
     the next element in order. Cost was minimized by finding the next element
-    out of order and putting that in order. Leaf nodes are represented by
-    different stack orderings where orders alternate between the next ordered
-    element being at the end (i.e. one flip away from being ordered)
-    and then brought to its proper place (i.e. ordered).
-    It costs the least to put the next element in order by flipping from
-    the next element to the front of the stack, and then into place.
+    out of order and directly putting that in order, as opposed to flipping
+    other elements to eventually put that element in order. Leaf nodes are
+    represented by different stack orderings where orders alternate between
+    the next ordered element being at the end (i.e. one flip away from being
+    ordered) and then brought to its proper place (i.e. ordered, lowering the heuristic).
