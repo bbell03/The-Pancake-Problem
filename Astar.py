@@ -73,7 +73,7 @@ def next_to_end(x, stack):
     # and 1 is not the last element on the stack:
     elif (not(stack[4] == stack[x-1]+1)) and (not(stack[4] == 1)):
         for i in range(x, 5):
-            # find the next element out of order: add leaf nodes to frontier
+            # find elements out of order: add leaf nodes to frontier
             # choose a leaf node with minimum cost: next unordered element
             if stack[i] == stack[x-1]+1:
                 # flip the stack from that point
