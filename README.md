@@ -5,7 +5,7 @@
 
 # README
 
-### Author(s): Kerem San and Brandon Bell
+### Author(s): Caroline Vanderlee and Brandon Bell
 
 ### CODE DETAILS
 
